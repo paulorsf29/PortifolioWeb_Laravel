@@ -126,5 +126,29 @@ utilizando técnicas de Inteligência Artificial Evolutiva.',
             'featured' => false,
             'published' => true,
         ]);
+
+         Project::create([
+            'title' => 'CRM Mineração',
+            'slug' => 'crm-mineracao',
+            'description' => 'Projeto básico de CRM desenvolvido em JavaScript para treinamento em equipe, focando em técnicas 
+            de organização utilizando Trello e metodologias Scrum. O objetivo principal foi praticar gestão de projetos em grupo 
+            seguindo frameworks ágeis.',
+            'content' => '<h3>CRM Mineração</h3>
+                         <p>Sistema de Customer Relationship Management desenvolvido para estudo e prática de:</p>
+                         <ul>
+                                 <li>Gestão de tarefas em equipe utilizando Trello</li>
+                                 <li>Aplicação de metodologias Scrum</li>
+                                 <li>Organização de projetos colaborativos</li>
+                                 <li>Versionamento e controle de código em grupo</li>
+                                 <li>Desenvolvimento de funcionalidades básicas de CRM</li>
+                         </ul>',
+            'image' => null,
+            'github_url' => 'https://github.com/paulorsf29/crm1.git',
+            'live_url' => 'https://portfolio.exemplo.com',
+            'technologies' => ['JavaScript', 'HTML5', 'CSS3', 'Trello', 'Metodologias Ágeis', 'Git'],
+            'order' => 5,
+            'featured' => false,
+            'published' => true,
+        ]);
     }
 }
