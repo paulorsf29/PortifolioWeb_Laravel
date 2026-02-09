@@ -5,7 +5,7 @@
 @section('content')
 <div class="text-center py-5">
     <h1 class="display-4">Bem-vindo ao Meu Portfólio</h1>
-    <p class="lead">Desenvolvedor Full Stack | Laravel | Desenvolvedor mobile | React Native | PostgreSQL</p>
+    <p class="lead">Desenvolvedor Full Stack | Laravel | Spring Boot | Desenvolvedor mobile | React Native | PostgreSQL</p>
     <a href="{{ route('projects.index') }}" class="btn btn-primary btn-lg mt-3">
         Ver Meus Projetos
     </a>

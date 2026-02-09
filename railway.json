@@ -2,12 +2,17 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "composer install --no-dev --optimize-autoloader && php artisan key:generate"
+    "buildCommand": "composer install --no-dev --optimize-autoloader",
+    "nixpacksConfig": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["php84", "php84Packages.composer"]
+        }
+      }
+    }
   },
   "deploy": {
-    "numReplicas": 1,
     "startCommand": "php artisan serve --host=0.0.0.0 --port=${PORT}",
-    "healthcheckPath": "/",
-    "healthcheckTimeout": 300
+    "healthcheckPath": "/"
   }
 }
