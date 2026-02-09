@@ -146,7 +146,7 @@ utilizando técnicas de Inteligência Artificial Evolutiva.',
             'github_url' => 'https://github.com/paulorsf29/crm1.git',
             'live_url' => 'https://portfolio.exemplo.com',
             'technologies' => ['JavaScript', 'HTML5', 'CSS3', 'Trello', 'Metodologias Ágeis', 'Git'],
-            'order' => 5,
+            'order' => 6,
             'featured' => false,
             'published' => true,
         ]);
