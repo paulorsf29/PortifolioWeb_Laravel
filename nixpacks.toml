@@ -1,4 +1,4 @@
-# nixpacks.toml
+# nixpacks.toml (VERSÃO CORRIGIDA)
 [phases.setup]
 nixPkgs = [
     "php84",
@@ -9,15 +9,14 @@ nixPkgs = [
     "php84Extensions.pdo",
     "php84Extensions.pdo_mysql",
     "php84Extensions.openssl",
-    "php84Extensions.tokenizer",
-    "php84Extensions.mysqlnd"
+    "php84Extensions.tokenizer"
 ]
 
 [phases.install]
 cmds = [
-    "composer install --no-dev --optimize-autoloader",
-    "php artisan key:generate"
+    "composer install --no-dev --optimize-autoloader"
 ]
 
+# A chave será gerada no start, quando o .env já existir
 [start]
-cmd = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "if [ ! -f .env ]; then touch .env && echo 'APP_ENV=production' >> .env && echo 'APP_DEBUG=false' >> .env; fi && php artisan key:generate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
