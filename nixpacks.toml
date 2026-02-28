@@ -1,4 +1,4 @@
-# nixpacks.toml (VERSÃO CORRIGIDA PARA POSTGRESQL)
+# nixpacks.toml (VERSÃO FORÇANDO PHP 8.4)
 [phases.setup]
 nixPkgs = [
     "php84",
@@ -7,33 +7,28 @@ nixPkgs = [
     "php84Extensions.mbstring",
     "php84Extensions.xml",
     "php84Extensions.pdo",
-    "php84Extensions.pdo_pgsql",  # Mudado de pdo_mysql para pdo_pgsql
-    "php84Extensions.pgsql",       # Adicionado extensão PostgreSQL
+    "php84Extensions.pdo_pgsql",
+    "php84Extensions.pgsql",
     "php84Extensions.openssl",
     "php84Extensions.tokenizer",
-    "php84Extensions.fileinfo",    # Adicionado para Laravel
-    "php84Extensions.session",      # Adicionado para sessões
-    "php84Extensions.pcntl",        # Adicionado para queues
-    "php84Extensions.posix"         # Adicionado para artisan
+    "php84Extensions.fileinfo",
+    "php84Extensions.session",
+    "php84Extensions.pcntl",
+    "php84Extensions.posix"
 ]
 
 [phases.install]
 cmds = [
+    "php84 -v",  # Verificar versão do PHP
     "composer install --no-dev --optimize-autoloader"
 ]
 
 [phases.build]
 cmds = [
-    "php artisan config:cache",
-    "php artisan route:cache",
-    "php artisan view:cache",
-    "php artisan event:cache"
+    "php84 artisan config:cache",
+    "php84 artisan route:cache",
+    "php84 artisan view:cache"
 ]
 
 [start]
-cmd = """
-php artisan key:generate --force --no-interaction && \
-php artisan migrate --force --no-interaction && \
-php artisan config:clear && \
-php artisan serve --host=0.0.0.0 --port=$PORT
-"""
+cmd = "php84 artisan key:generate --force && php84 artisan migrate --force && php84 artisan serve --host=0.0.0.0 --port=$PORT"
