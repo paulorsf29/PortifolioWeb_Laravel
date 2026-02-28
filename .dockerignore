@@ -1,0 +1,17 @@
+# .dockerignore
+vendor/
+node_modules/
+.env
+.git
+.gitignore
+README.md
+docker-compose.yml
+.DS_Store
+storage/logs/*
+!storage/logs/.gitkeep
+storage/framework/cache/*
+!storage/framework/cache/.gitkeep
+storage/framework/sessions/*
+!storage/framework/sessions/.gitkeep
+storage/framework/views/*
+!storage/framework/views/.gitkeep
