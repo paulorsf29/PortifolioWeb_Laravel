@@ -1,49 +1,49 @@
-# Dockerfile
+# Dockerfile (versão otimizada)
 FROM php:8.4-cli
 
-# Instalar dependências do sistema
+# Instalar dependências do sistema e extensões PHP
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Instalar extensões PHP necessárias
-RUN docker-php-ext-install \
+    libonig-dev \
+    libxml2-dev \
+    && docker-php-ext-install \
     pdo \
     pdo_pgsql \
     pgsql \
     mbstring \
     xml \
     pcntl \
-    posix
+    posix \
+    && rm -rf /var/lib/apt/lists/*
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos de configuração primeiro (para cache do Docker)
+# Copiar apenas arquivos necessários para instalação
 COPY composer.json composer.lock ./
 
-# Instalar dependências (sem scripts para evitar erros)
+# Instalar dependências
 RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
-# Copiar o resto dos arquivos
+# Copiar resto da aplicação
 COPY . .
 
-# Gerar chave da aplicação
-RUN php artisan key:generate --force
+# Gerar chave e otimizar
+RUN php artisan key:generate --force && \
+    php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache
 
-# Criar script de entrada
+# Script de entrada
 RUN echo '#!/bin/bash\n\
 php artisan migrate --force --no-interaction\n\
-php artisan serve --host=0.0.0.0 --port=$PORT\n\
+exec php artisan serve --host=0.0.0.0 --port=$PORT\n\
 ' > /start.sh && chmod +x /start.sh
 
-# Expor porta
 EXPOSE 8080
 
-# Comando de inicialização
 CMD ["/start.sh"]
