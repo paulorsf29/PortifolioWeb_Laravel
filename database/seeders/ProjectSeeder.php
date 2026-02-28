@@ -49,7 +49,7 @@ class ProjectSeeder extends Seeder
                          </ul>',
             'image' => null,
             'github_url' => 'https://github.com/paulorsf29/ToDoList_PHP-Laravel.git',
-            'live_url' => 'https://demo-ecommerce.exemplo.com',
+            'live_url' => 'https://github.com/paulorsf29/ToDoList_PHP-Laravel.git',
             'technologies' => ['Laravel', 'PostgreSQL', 'Bootstrap', 'html'],
             'order' => 2,
             'featured' => true,
@@ -70,7 +70,7 @@ class ProjectSeeder extends Seeder
                          </ul>',
             'image' => null,
             'github_url' => 'https://github.com/paulorsf29/PortifolioWeb_Laravel.git',
-            'live_url' => 'https://portfolio.exemplo.com',
+            'live_url' => 'https://portifolioweblaravel-production.up.railway.app/',
             'technologies' => ['Laravel', 'PostgreSQL', 'Bootstrap 5', 'JavaScript'],
             'order' => 3,
             'featured' => false,
@@ -120,7 +120,7 @@ utilizando técnicas de Inteligência Artificial Evolutiva.',
                          </ul>',
             'image' => null,
             'github_url' => 'https://github.com/paulorsf29/Freta_project_2',
-            'live_url' => 'https://portfolio.exemplo.com',
+            'live_url' => 'https://github.com/paulorsf29/Freta_project_2',
             'technologies' => ['React Native', 'Android', 'Firebase', 'google-API', 'javascript'],
             'order' => 5,
             'featured' => false,
@@ -144,9 +144,32 @@ utilizando técnicas de Inteligência Artificial Evolutiva.',
                          </ul>',
             'image' => null,
             'github_url' => 'https://github.com/paulorsf29/crm1.git',
-            'live_url' => 'https://portfolio.exemplo.com',
+            'live_url' => 'https://github.com/paulorsf29/crm1.git',
             'technologies' => ['JavaScript', 'HTML5', 'CSS3', 'Trello', 'Metodologias Ágeis', 'Git'],
             'order' => 6,
+            'featured' => false,
+            'published' => true,
+        ]);
+
+        Project::create([
+            'title' => 'Projeto Bank Marketing',
+            'slug' => 'Projeto_Bank_Marketing',
+            'description' => 'Este repositório contém a análise preditiva aplicadas ao Bank Marketing Dataset, disponibilizado 
+            pelo UCI Machine Learning Repository. com o objetivo é prever a subscrição (sim / não) de depósito a prazo por clientes 
+            bancários, com base em dados demográficos, históricos e de campanhas telefônicas ',
+            'content' => '<h3>Projeto Bank Marketing</h3>
+                         <p>Funcionalidades:</p>
+                         <ul>
+                             <li>Insights sobre os dados</li>
+                             <li>Graficos dinamicos com matplotlib</li>
+                             <li>predição de dados com sckit learn</li>
+                             <li>Analise descritiva</li>
+                         </ul>',
+            'image' => null,
+            'github_url' => 'https://github.com/paulorsf29/Projeto_Bank_Marketing',
+            'live_url' => 'https://github.com/paulorsf29/Projeto_Bank_Marketing',
+            'technologies' => ['Python', 'Sckit leark', 'Pandas', 'Matplotlib', 'jupter notbook'],
+            'order' => 7,
             'featured' => false,
             'published' => true,
         ]);
