@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 // Página inicial
 Route::get('/', function () {
@@ -29,14 +31,21 @@ Route::post('/contato/enviar', function (Request $request) {
         'message' => 'required|string',
     ]);
     
-    // Aqui você pode:
-    // 1. Salvar no banco de dados (se criar uma tabela de mensagens)
-    // 2. Enviar email
-    // 3. Integrar com serviço de terceiros
-    
-    // Por enquanto, apenas redireciona com mensagem de sucesso
-    return redirect()->route('contact')
-        ->with('success', 'Mensagem enviada com sucesso! Entrarei em contato em breve.');
+    try {
+        // Envia o email
+        Mail::to('paulorsf229@gmail.com')->send(new ContactMail($validated));
+        
+        return redirect()->route('contact')
+            ->with('success', 'Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            
+    } catch (\Exception $e) {
+        // Log do erro para debug
+        \Log::error('Erro ao enviar email: ' . $e->getMessage());
+        
+        return redirect()->route('contact')
+            ->with('error', 'Erro ao enviar mensagem. Por favor, tente novamente.')
+            ->withInput();
+    }
 })->name('contact.submit');
 
 // ROTAS DE PROJETOS

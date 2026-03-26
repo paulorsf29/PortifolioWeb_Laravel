@@ -4,108 +4,56 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="mb-4">Entre em Contato</h1>
+    <h1 class="mb-5 text-center">Contato</h1>
     
-    <!-- Mensagens de Sucesso/Erro -->
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    
-    @if($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul class="mb-0">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title mb-4">Envie uma mensagem</h5>
-                    
-                    <form action="{{ route('contact.submit') }}" method="POST">
-                        @csrf
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nome *</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                   id="name" name="name" value="{{ old('name') }}" required>
-                            @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <div class="row text-center g-4">
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <i class="bi bi-envelope fs-1 text-primary"></i>
+                                <h5 class="mt-3">E-mail</h5>
+                                <p class="mb-0">paulorsf229@gmail.com</p>
+                            </div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail *</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                                   id="email" name="email" value="{{ old('email') }}" required>
-                            @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <i class="bi bi-telephone fs-1 text-primary"></i>
+                                <h5 class="mt-3">Telefone</h5>
+                                <p class="mb-0">(91) 98449-4995</p>
+                            </div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Assunto *</label>
-                            <input type="text" class="form-control @error('subject') is-invalid @enderror" 
-                                   id="subject" name="subject" value="{{ old('subject') }}" required>
-                            @error('subject')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <i class="bi bi-github fs-1 text-primary"></i>
+                                <h5 class="mt-3">GitHub</h5>
+                                <a href="https://github.com/paulorsf29" class="text-decoration-none" target="_blank">
+                                    github.com/paulorsf29
+                                </a>
+                            </div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensagem *</label>
-                            <textarea class="form-control @error('message') is-invalid @enderror" 
-                                      id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
-                            @error('message')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <i class="bi bi-linkedin fs-1 text-primary"></i>
+                                <h5 class="mt-3">LinkedIn</h5>
+                                <a href="https://www.linkedin.com/in/paulo-ricardo-fonseca-920037265/" class="text-decoration-none" target="_blank">
+                                    /in/paulo-ricardo-fonseca
+                                </a>
+                            </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-send me-2"></i> Enviar Mensagem
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title mb-4">Informações de Contato</h5>
-                    
-                    <div class="mb-4">
-                        <h6><i class="bi bi-envelope me-2"></i> E-mail</h6>
-                        <p>paulorsf229@gmail.com</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6><i class="bi bi-github me-2"></i> GitHub</h6>
-                        <p>https://github.com/paulorsf29</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6><i class="bi bi-linkedin me-2"></i> LinkedIn</h6>
-                        <p>https://www.linkedin.com/in/paulo-ricardo-fonseca-920037265/</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6><i class="bi bi-geo-alt me-2"></i> Localização</h6>
-                        <p>Belém, Pará, Brasil</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6><i class="bi bi-telephone me-2"></i> Telefone</h6>
-                        <p>(91) cont</p>
+                        <div class="col-md-12">
+                            <div class="mt-2">
+                                <i class="bi bi-geo-alt fs-1 text-primary"></i>
+                                <h5 class="mt-3">Localização</h5>
+                                <p class="mb-0">Belém, Pará, Brasil</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
